@@ -1,15 +1,15 @@
 package error_system
 
 type Error interface {
-	Error() string //golang error interface
 	Id() string
+	Error() string //golang error interface
 	Child() Error
 	HierarchyId() string
 }
 
 type ErrorImpl struct {
-	description string
 	id          string
+	description string
 	child       Error
 	hierarchyId string
 }
@@ -35,7 +35,7 @@ func NewError(id string, description string, child Error) ErrorImpl {
 	desc := description
 	if child != nil {
 		hierarchyId += child.HierarchyId()
-		desc += child.Error()
+		desc += ": " + child.Error()
 	}
 	return ErrorImpl{id: id, description: description, child: child, hierarchyId: hierarchyId}
 }
