@@ -37,5 +37,5 @@ func NewError(id string, description string, child Error) ErrorImpl {
 		hierarchyId += child.HierarchyId()
 		desc += ": " + child.Error()
 	}
-	return ErrorImpl{id: id, description: description, child: child, hierarchyId: hierarchyId}
+	return ErrorImpl{id: id, description: desc, child: child, hierarchyId: hierarchyId}
 }
